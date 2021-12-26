@@ -6,7 +6,7 @@ var (
 	noColor    string = "\033[0m"
 	green      string = "\033[38;2;055;183;021m"
 	brown      string = "\033[38;2;192;154;107m"
-	brailEmpty string = "\u2800"
+	brailEmpty string = " "
 )
 
 func DisplayColor(b bool) {
