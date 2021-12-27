@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -80,7 +79,7 @@ func TestE2E(t *testing.T) {
 		testFile string
 		td       string
 	}{
-		// {args: []string{"-1"}, testFile: "logo-ls.snap", td: "Testing normal execution"},
+		{args: []string{"-1"}, testFile: "logo-ls.snap", td: "Testing normal execution"},
 		{args: []string{"-1a"}, testFile: "logo-ls-a.snap", td: "Testing -a (all) execution"},
 		{args: []string{"-1A"}, testFile: "logo-ls-almost-all.snap", td: "Testing -A (almost all) execution"},
 		{args: []string{"-1i"}, testFile: "logo-ls-i.snap", td: "Testing -i (no icon) execution"},
@@ -117,20 +116,6 @@ func TestE2E(t *testing.T) {
 			fileData, err := ioutil.ReadFile(filepath.Join("./testdata", test.testFile))
 			if err != nil {
 				st.Fatal(err)
-			}
-
-			f, err := os.Create("expected.txt")
-
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			defer f.Close()
-
-			_, err2 := f.Write(cmdData)
-
-			if err2 != nil {
-				log.Fatal(err2)
 			}
 
 			if bytes.Compare(cmdData, fileData) != 0 {
