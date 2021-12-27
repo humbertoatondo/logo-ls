@@ -1,5 +1,0 @@
-{
-  "go.lintFlags": [
-    "\"-min_confidence=.9\""
-  ]
-}
